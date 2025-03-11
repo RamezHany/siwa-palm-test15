@@ -1,7 +1,7 @@
-import "./globals.css"
+import "../globals.css"
 import { Inter } from "next/font/google"
 import { NextIntlClientProvider } from "next-intl"
-import { getMessages, getTranslations, unstable_setRequestLocale } from "next-intl/server"
+import { getMessages, unstable_setRequestLocale } from "next-intl/server"
 import { locales } from "@/i18n/config"
 
 const inter = Inter({

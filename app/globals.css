@@ -77,6 +77,17 @@ html {
   }
 }
 
+/* RTL and LTR support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
 /* Custom utility classes for our brand green color */
 .bg-brand-green {
   background-color: #458a5d;

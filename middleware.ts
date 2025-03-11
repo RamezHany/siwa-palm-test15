@@ -5,17 +5,15 @@ export default createMiddleware({
   // A list of all locales that are supported
   locales,
 
-  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+  // Used when no locale matches
   defaultLocale,
 
-  // Detect locale from browser/user preferences
-  localeDetection: true,
+  // If this locale is matched, pathnames work without a prefix (e.g. `/about`)
+  localePrefix: 'as-needed',
 })
 
 export const config = {
-  // Match all pathnames except for
-  // - ... static files (e.g. /favicon.ico)
-  // - ... internal Next.js paths (/api/, /_next/)
+  // Skip all paths that should not be internationalized
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 }
 

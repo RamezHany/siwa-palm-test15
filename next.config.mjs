@@ -15,9 +15,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    serverComponentsExternalPackages: ['next-intl'],
-  },
 };
 
 export default withNextIntl(nextConfig);
