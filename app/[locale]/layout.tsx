@@ -1,13 +1,10 @@
-import "../globals.css"
 import { Inter } from "next/font/google"
-import { NextIntlClientProvider } from "next-intl"
-import { getMessages, unstable_setRequestLocale } from "next-intl/server"
+import "./globals.css"
 import { locales } from "@/i18n/config"
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages } from "next-intl/server"
 
-const inter = Inter({
-  subsets: ["latin"], // Removed 'arabic' as it's not supported
-  variable: "--font-inter",
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Siwa Palm - Premium Dates from Siwa Oasis",
@@ -25,18 +22,12 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Enable static rendering
-  unstable_setRequestLocale(locale);
-
-  const messages = await getMessages();
-
-  // Set the direction based on locale
-  const dir = locale === "ar" ? "rtl" : "ltr"
+  const messages = await getMessages({locale})
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+    <html lang={locale}>
+      <body className={inter.className}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>
       </body>
