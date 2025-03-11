@@ -149,7 +149,7 @@ export function GalleryClient() {
     <div className={cn("py-16 px-4 sm:px-6 lg:px-8 bg-amber-50 min-h-screen", isRtl ? "rtl" : "ltr")}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <Link href="/" className="inline-flex items-center text-amber-900 hover:text-amber-700 transition-colors">
+          <Link href={`/${locale}`} className="inline-flex items-center text-amber-900 hover:text-amber-700 transition-colors">
             <ChevronLeft className="mr-2" />
             <span>{t("backToHome")}</span>
           </Link>

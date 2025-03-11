@@ -6,15 +6,13 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-type Props = {
-  params: {
-    locale: string
-  }
-}
-
-export default function HomePage({ params }: Props) {
+export default async function HomePage({
+  params: { locale },
+}: {
+  params: { locale: string }
+}) {
   // Enable static rendering
-  setRequestLocale(params.locale)
+  setRequestLocale(locale)
 
   return <HomeClient />
 }

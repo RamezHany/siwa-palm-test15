@@ -116,7 +116,7 @@ export function GallerySection() {
         </div>
         
         <div className="text-center mt-12">
-          <Link href="/gallery">
+          <Link href={`/${locale}/gallery`}>
             <Button 
               className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-2"
             >
