@@ -93,6 +93,11 @@ const config = {
           900: "#78350f",
           950: "#451a03",
         },
+        "brand-green": {
+          DEFAULT: "#458a5d",
+          light: "#5aa575",
+          dark: "#3a7350",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

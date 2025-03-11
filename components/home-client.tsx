@@ -10,6 +10,7 @@ import { useTranslations, useLocale } from "next-intl"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import LanguageSwitcher from "@/components/language-switcher"
+import { GallerySection } from "./gallery-section"
 
 export default function HomeClient() {
   const t = useTranslations("Home")
@@ -17,8 +18,10 @@ export default function HomeClient() {
   const [scrollY, setScrollY] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeProduct, setActiveProduct] = useState(0)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
@@ -54,9 +57,10 @@ export default function HomeClient() {
   ]
 
   const parallaxOffset = scrollY * 0.5
+  const isRtl = locale === "ar"
 
   return (
-    <div dir={locale === "ar" ? "rtl" : "ltr"} className="min-h-screen bg-stone-50 overflow-hidden">
+    <div className={cn("min-h-screen bg-stone-50 overflow-hidden", isRtl ? "rtl" : "ltr")}>
       {/* النافذة العائمة للتنقل */}
       <div
         className={cn(
@@ -156,7 +160,7 @@ export default function HomeClient() {
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{
             backgroundImage: "url('/placeholder.svg?height=1080&width=1920')",
-            transform: `translateY(${parallaxOffset}px)`,
+            transform: isMounted ? `translateY(${parallaxOffset}px)` : 'none',
           }}
         />
 
@@ -322,6 +326,9 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <GallerySection />
+
       {/* قسم الاتصال */}
       <section className="py-20 bg-amber-900 text-white">
         <div className="container mx-auto px-4">
@@ -450,7 +457,15 @@ export default function HomeClient() {
 }
 
 // مكونات مساعدة
-function NavLink({ children, active = false, scrolled = false }) {
+function NavLink({ 
+  children, 
+  active = false, 
+  scrolled = false 
+}: { 
+  children: React.ReactNode; 
+  active?: boolean; 
+  scrolled?: boolean;
+}) {
   return (
     <Link
       href="#"
@@ -473,7 +488,15 @@ function NavLink({ children, active = false, scrolled = false }) {
   )
 }
 
-function ValueCard({ icon, title, description }) {
+function ValueCard({ 
+  icon, 
+  title, 
+  description 
+}: { 
+  icon: string; 
+  title: string; 
+  description: string;
+}) {
   return (
     <div className="bg-amber-100/50 rounded-2xl p-4 hover:bg-amber-100 transition-colors">
       <div className="text-3xl mb-2">{icon}</div>
