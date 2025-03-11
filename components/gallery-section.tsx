@@ -56,15 +56,16 @@ const galleryImages = [
 
 export function GallerySection() {
   const locale = useLocale();
+  const t = useTranslations("Gallery");
   const [hoveredImage, setHoveredImage] = useState<number | null>(null);
 
   return (
     <section className="py-20 bg-amber-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-amber-900 mb-4">معرض الصور</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-amber-900 mb-4">{t("title")}</h2>
           <p className="text-lg text-amber-800/70 max-w-2xl mx-auto">
-            استكشف مجموعتنا من الصور الجميلة التي تعرض منتجاتنا وخدماتنا
+            {t("subtitle")}
           </p>
         </div>
         
@@ -106,7 +107,7 @@ export function GallerySection() {
                     variant="outline" 
                     className="bg-white text-amber-900 hover:bg-amber-600 hover:text-white border-amber-600"
                   >
-                    عرض التفاصيل
+                    {t("viewDetails")}
                   </Button>
                 </motion.div>
               )}
@@ -119,7 +120,7 @@ export function GallerySection() {
             <Button 
               className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-2"
             >
-              عرض المزيد
+              {t("viewMore")}
             </Button>
           </Link>
         </div>

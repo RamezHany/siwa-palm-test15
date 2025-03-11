@@ -109,11 +109,10 @@ const galleryImages = [
   },
 ];
 
-const categories = ["الكل", "منتجات", "فعاليات", "مرافق"];
-
 export function GalleryClient() {
   const locale = useLocale();
-  const [selectedCategory, setSelectedCategory] = useState("الكل");
+  const t = useTranslations("Gallery");
+  const [selectedCategory, setSelectedCategory] = useState(locale === "ar" ? "الكل" : "All");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -121,9 +120,28 @@ export function GalleryClient() {
     setIsMounted(true);
   }, []);
 
-  const filteredImages = selectedCategory === "الكل" 
+  const categories = [
+    t("categories.all"),
+    t("categories.products"),
+    t("categories.events"),
+    t("categories.facilities")
+  ];
+
+  const filteredImages = selectedCategory === t("categories.all")
     ? galleryImages 
-    : galleryImages.filter(img => img.category === selectedCategory);
+    : galleryImages.filter(img => {
+        if (locale === "ar") {
+          return img.category === selectedCategory;
+        } else {
+          // Map Arabic categories to English for filtering
+          const categoryMap: Record<string, string> = {
+            "منتجات": t("categories.products"),
+            "فعاليات": t("categories.events"),
+            "مرافق": t("categories.facilities")
+          };
+          return categoryMap[img.category] === selectedCategory;
+        }
+      });
 
   const isRtl = locale === "ar";
 
@@ -133,14 +151,14 @@ export function GalleryClient() {
         <div className="mb-8">
           <Link href="/" className="inline-flex items-center text-amber-900 hover:text-amber-700 transition-colors">
             <ChevronLeft className="mr-2" />
-            <span>العودة إلى الصفحة الرئيسية</span>
+            <span>{t("backToHome")}</span>
           </Link>
         </div>
         
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-amber-900 mb-4">معرض الصور</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-amber-900 mb-4">{t("title")}</h1>
           <p className="text-lg text-amber-800/70 max-w-2xl mx-auto">
-            تصفح مجموعتنا من الصور التي تعرض منتجاتنا وفعالياتنا ومرافقنا
+            {t("subtitle")}
           </p>
         </div>
 
@@ -194,7 +212,15 @@ export function GalleryClient() {
                   /> */}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                  <span className="text-white text-sm font-medium">{image.category}</span>
+                  <span className="text-white text-sm font-medium">{
+                    locale === "ar" 
+                      ? image.category 
+                      : {
+                          "منتجات": t("categories.products"),
+                          "فعاليات": t("categories.events"),
+                          "مرافق": t("categories.facilities")
+                        }[image.category]
+                  }</span>
                 </div>
               </motion.div>
             ))}
@@ -241,7 +267,15 @@ export function GalleryClient() {
                   {galleryImages.find(img => img.id === selectedImage)?.alt}
                 </h3>
                 <p className="text-gray-600">
-                  الفئة: <span>{galleryImages.find(img => img.id === selectedImage)?.category}</span>
+                  {t("category")}: <span>{
+                    locale === "ar" 
+                      ? galleryImages.find(img => img.id === selectedImage)?.category 
+                      : {
+                          "منتجات": t("categories.products"),
+                          "فعاليات": t("categories.events"),
+                          "مرافق": t("categories.facilities")
+                        }[galleryImages.find(img => img.id === selectedImage)?.category || ""]
+                  }</span>
                 </p>
               </div>
             </div>

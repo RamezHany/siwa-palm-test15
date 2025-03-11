@@ -17,12 +17,11 @@
     },
     "products": {
       "title": "Our Premium Products",
-      "subtitle": "We offer a distinguished collection of the finest dates grown with care in Siwa Oasis and the Western Desert",
-      "viewAll": "View All Products",
+      "subtitle": "We offer a distinguished collection of the finest dates grown carefully in Siwa Oasis and the Western Oases",
       "orderNow": "Order Now",
       "medjool": {
         "name": "Medjool Dates",
-        "description": "Luxurious dates with a rich taste and creamy texture, considered one of the finest date varieties in the world"
+        "description": "Luxury dates with a rich taste and creamy texture, considered one of the finest dates in the world"
       },
       "siwa": {
         "name": "Siwa Dates",
@@ -34,11 +33,11 @@
       }
     },
     "about": {
-      "title": "The Siwa Palm Story",
+      "title": "Siwa Palm Story",
       "farmImageAlt": "Siwa Palm Farms",
       "farmLocation": "Our farms in Siwa Oasis, Egypt",
-      "paragraph1": "Siwa Palm is a leading agricultural company with decades of experience, specializing in growing Medjool and Siwa dates in Siwa Oasis and the Western Desert.",
-      "paragraph2": "Founded in 2001 as an Egyptian joint-stock company, we take quality as our motto in production and export. We have received numerous awards as the best producer of semi-dry Medjool dates, and we strive for global leadership.",
+      "paragraph1": "Siwa Palm is a leading agricultural company with decades of experience, specializing in growing Medjool and Siwa dates in Siwa Oasis and the Western Oases.",
+      "paragraph2": "Founded in 2001 as an Egyptian joint-stock company, it adopts quality as its motto in production and export. It has received numerous awards as the best producer of semi-dry Medjool dates and seeks global leadership.",
       "values": {
         "agriculture": {
           "title": "Agriculture",
@@ -148,6 +147,20 @@
       "title": "Order Submitted Successfully!",
       "message": "Thank you for your order. We will contact you shortly to confirm the details."
     }
+  },
+  "Gallery": {
+    "title": "Gallery",
+    "subtitle": "Browse our collection of images showcasing our products, events, and facilities",
+    "backToHome": "Back to Home",
+    "categories": {
+      "all": "All",
+      "products": "Products",
+      "events": "Events",
+      "facilities": "Facilities"
+    },
+    "viewDetails": "View Details",
+    "viewMore": "View More",
+    "category": "Category"
   }
 }
 
